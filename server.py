@@ -306,7 +306,7 @@ def announce_new_block(block):
     respective chains.
     """
     for peer in peers:
-        url = "{}add_block".format(peer)
+        url = "{}/add_block".format(peer)
         headers = {'Content-Type': "application/json"}
         requests.post(url,
                       data=json.dumps(block.__dict__, sort_keys=True),
