@@ -32,8 +32,7 @@ def fetch_posts():
 def index():
     fetch_posts()
     return render_template('index.html',
-                           title='YourNet: Decentralized '
-                                 'content sharing',
+                           title='Sample Blockchain Network For Messaging',
                            posts=posts,
                            node_address=CONNECTED_NODE_ADDRESS,
                            readable_time=timestamp_to_string)
@@ -57,6 +56,8 @@ def submit_textarea():
     requests.post(new_tx_address,
                   json=post_object,
                   headers={'Content-type': 'application/json'})
+    mine_tx = "{}/mine".format(CONNECTED_NODE_ADDRESS)
+    requests.get(mine_tx)
 
     # Return to the homepage
     return redirect('/')
